@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asmora Parfume — Parfum Isi Ulang Premium Tangerang Selatan</title>
+    <meta name="description" content="Asmora Parfume — parfum isi ulang premium Tangerang Selatan. Wangi tahan lama, harga terjangkau. Beli online atau datang ke Pamulang Permai.">
+
+    <!-- META PIXEL (isi nanti setelah daftar Meta Business) -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'GANTI_DENGAN_PIXEL_ID_ANDA');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=GANTI_DENGAN_PIXEL_ID_ANDA&ev=PageView&noscript=1"/></noscript>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1a1a2e; background: #faf7f2;
+            line-height: 1.6; overflow-x: hidden;
+        }
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+        .script-font { font-family: 'Playfair Display', serif; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+        @keyframes pop { 0%{transform:scale(0.8);opacity:0} 70%{transform:scale(1.05)} 100%{transform:scale(1);opacity:1} }
+        .anim-up { animation: fadeUp 0.7s ease forwards; opacity: 0; }
+        .anim-up.d1 { animation-delay: 0.1s; }
+        .anim-up.d2 { animation-delay: 0.2s; }
+        .anim-up.d3 { animation-delay: 0.3s; }
+        .anim-up.d4 { animation-delay: 0.4s; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 14px 0;
+            background: rgba(250,247,242,0.92); backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s;
+        }
+        nav .container { display: flex; align-items: center; justify-content: space-between; }
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800; font-size: 1.3rem; color: #1a1a2e; text-decoration: none;
+        }
+        nav .logo span { color: #c9a96e; }
+        nav .logo small {
+            display: block; font-family: 'Inter', sans-serif;
+            font-weight: 400; font-size: 0.6rem; color: #9ca3af; letter-spacing: 2px;
+        }
+        nav .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+        nav .nav-links a {
+            color: #4b5563; text-decoration: none; font-size: 0.85rem;
+            font-weight: 500; transition: color 0.3s;
+        }
+        nav .nav-links a:hover { color: #c9a96e; }
+        nav .nav-wa {
+            background: #25D366; color: #fff; padding: 8px 18px; border-radius: 50px;
+            text-decoration: none; font-weight: 600; font-size: 0.8rem;
+            transition: all 0.3s; display: flex; align-items: center; gap: 6px;
+        }
+        nav .nav-wa:hover { background: #1da851; transform: scale(1.04); }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+        .nav-toggle span { display: block; width: 24px; height: 2px; background: #1a1a2e; margin: 5px 0; border-radius: 2px; transition: 0.3s; }
+
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; padding-top: 70px;
+            background: linear-gradient(135deg, #faf7f2 0%, #f0e9df 50%, #e8dccf 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -300px; right: -200px;
+            width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        .hero .container {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+            position: relative; z-index: 2;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(201,169,110,0.2); color: #8b7335;
+            padding: 6px 16px; border-radius: 50px; font-size: 0.75rem;
+            font-weight: 600; margin-bottom: 16px; border: 1px solid rgba(201,169,110,0.2);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem; font-weight: 800; color: #1a1a2e;
+            line-height: 1.15; margin-bottom: 16px;
+        }
+        .hero h1 span { color: #c9a96e; }
+        .hero p { color: #6b7280; font-size: 1.05rem; margin-bottom: 28px; max-width: 460px; line-height: 1.8; }
+        .hero .cta-group { display: flex; gap: 12px; flex-wrap: wrap; }
+        .hero .cta-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: linear-gradient(135deg, #c9a96e, #d4b87a); color: #1a1a2e;
+            padding: 14px 30px; border-radius: 50px; font-weight: 700; text-decoration: none;
+            transition: all 0.3s; font-size: 0.9rem;
+        }
+        .hero .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(201,169,110,0.3); }
+        .hero .cta-secondary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #1a1a2e; color: #fff;
+            padding: 14px 30px; border-radius: 50px; font-weight: 600; text-decoration: none;
+            transition: all 0.3s; font-size: 0.9rem;
+        }
+        .hero .cta-secondary:hover { background: #2a2a4e; transform: translateY(-3px); }
+
+        .hero-visual {
+            display: flex; justify-content: center; align-items: center; position: relative;
+        }
+        .hero-visual .bottle {
+            width: 220px; height: 340px;
+            background: linear-gradient(180deg, #f5e6d3, #e8d5bc, #d4bfa5);
+            border-radius: 110px 110px 60px 60px;
+            position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            animation: float 4s ease-in-out infinite;
+        }
+        .hero-visual .bottle::before {
+            content: ''; position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+            width: 40px; height: 20px;
+            background: linear-gradient(180deg, #c9a96e, #b8965e);
+            border-radius: 8px 8px 0 0;
+        }
+        .hero-visual .bottle::after {
+            content: ''; position: absolute; top: 20px; left: 20px; right: 40px; bottom: 40px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4), transparent);
+            border-radius: 90px 90px 40px 40px;
+        }
+        .hero-visual .label {
+            position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
+            width: 140px; height: 160px;
+            background: linear-gradient(135deg, #1a1a2e, #2a2a4e);
+            border-radius: 12px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; color: #fff; z-index: 2;
+        }
+        .hero-visual .label .brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6;
+        }
+        .hero-visual .label .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem; font-weight: 700; color: #c9a96e; margin: 6px 0;
+        }
+        .hero-visual .label .desc { font-size: 0.55rem; opacity: 0.5; letter-spacing: 1px; }
+        .hero-visual .float-tag {
+            position: absolute; background: #fff; border-radius: 16px;
+            padding: 12px 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            animation: float 3s ease-in-out infinite;
+        }
+        .hero-visual .float-tag.t1 { top: 30px; right: -10px; animation-delay: -1s; }
+        .hero-visual .float-tag.t2 { bottom: 60px; left: -20px; animation-delay: -2s; }
+        .hero-visual .float-tag .emoji { font-size: 1.3rem; }
+        .hero-visual .float-tag .text { font-size: 0.75rem; font-weight: 600; color: #1a1a2e; }
+        .hero-visual .float-tag .sub { font-size: 0.6rem; color: #9ca3af; }
+
+        #produk { padding: 80px 0; }
+        .section-tag {
+            display: inline-block;
+            background: rgba(201,169,110,0.15); color: #8b7335;
+            padding: 4px 14px; border-radius: 50px; font-size: 0.7rem;
+            font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem; font-weight: 800; color: #1a1a2e; margin-bottom: 12px;
+        }
+        .section-title span { color: #c9a96e; }
+        .section-sub { color: #6b7280; font-size: 1rem; margin-bottom: 12px; }
+        .center { text-align: center; }
+        .center .section-sub { max-width: 500px; margin: 0 auto 40px; }
+
+        .kategori-tabs {
+            display: flex; gap: 8px; justify-content: center; margin-bottom: 36px; flex-wrap: wrap;
+        }
+        .kategori-tabs button {
+            padding: 8px 20px; border-radius: 50px; border: 1px solid #e5e0d8;
+            background: #fff; font-family: 'Inter', sans-serif;
+            font-size: 0.8rem; font-weight: 500; color: #4b5563;
+            cursor: pointer; transition: all 0.3s;
+        }
+        .kategori-tabs button:hover { border-color: #c9a96e; color: #8b7335; }
+        .kategori-tabs button.active {
+            background: #1a1a2e; border-color: #1a1a2e; color: #fff;
+        }
+
+        .produk-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;
+        }
+        .produk-card {
+            background: #fff; border-radius: 20px; padding: 24px 20px;
+            border: 1px solid #eee8e0; transition: all 0.4s ease;
+            text-align: center; position: relative;
+        }
+        .produk-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+        .produk-card .best-badge {
+            position: absolute; top: 10px; left: 10px;
+            background: linear-gradient(135deg, #c9a96e, #d4b87a); color: #1a1a2e;
+            padding: 4px 10px; border-radius: 8px; font-size: 0.6rem; font-weight: 700;
+        }
+        .produk-card .baru-badge {
+            position: absolute; top: 10px; left: 10px;
+            background: #22c55e; color: #fff;
+            padding: 4px 10px; border-radius: 8px; font-size: 0.6rem; font-weight: 700;
+        }
+        .produk-card .bottle-icon {
+            width: 80px; height: 120px;
+            background: linear-gradient(180deg, #f0e9df, #e0d5c8);
+            border-radius: 40px 40px 20px 20px;
+            margin: 0 auto 16px; position: relative;
+        }
+        .produk-card .bottle-icon::after {
+            content: ''; position: absolute; top: 10px; left: 10px; right: 20px; bottom: 15px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4), transparent);
+            border-radius: 30px 30px 15px 15px;
+        }
+        .produk-card .bottle-icon.w1 { background: linear-gradient(180deg, #fce4ec, #f8bbd0); }
+        .produk-card .bottle-icon.w2 { background: linear-gradient(180deg, #e3f2fd, #bbdefb); }
+        .produk-card .bottle-icon.w3 { background: linear-gradient(180deg, #f3e5f5, #e1bee7); }
+        .produk-card .bottle-icon.w4 { background: linear-gradient(180deg, #fff3e0, #ffe0b2); }
+        .produk-card .bottle-icon.w5 { background: linear-gradient(180deg, #e8f5e9, #c8e6c9); }
+        .produk-card .bottle-icon.w6 { background: linear-gradient(180deg, #fce4ec, #f8bbd0); }
+        .produk-card .bottle-icon.w7 { background: linear-gradient(180deg, #fffde7, #fff9c4); }
+        .produk-card .bottle-icon.w8 { background: linear-gradient(180deg, #e0f7fa, #b2ebf2); }
+        .produk-card .bottle-icon.w9 { background: linear-gradient(180deg, #efebe9, #d7ccc8); }
+        .produk-card .bottle-icon.w10 { background: linear-gradient(180deg, #f1f8e9, #dcedc8); }
+
+        .produk-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem; color: #1a1a2e; margin-bottom: 4px;
+        }
+        .produk-card .varian { font-size: 0.75rem; color: #9ca3af; margin-bottom: 12px; }
+        .produk-card .harga-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; }
+        .produk-card .harga-row .harga-utama {
+            font-size: 1.3rem; font-weight: 800; color: #1a1a2e;
+        }
+        .produk-card .harga-row .harga-refill {
+            font-size: 0.85rem; color: #c9a96e; font-weight: 600;
+        }
+        .produk-card .btn-order {
+            display: block; background: #1a1a2e; color: #fff;
+            padding: 10px; border-radius: 12px; text-decoration: none;
+            font-weight: 600; font-size: 0.85rem; transition: all 0.3s;
+        }
+        .produk-card .btn-order:hover { background: #c9a96e; color: #1a1a2e; }
+
+        #ukuran { padding: 60px 0; background: #f0e9df; }
+        .ukuran-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+        }
+        .ukuran-card {
+            background: #fff; border-radius: 20px; padding: 24px 16px; text-align: center;
+            border: 1px solid #eee8e0; transition: all 0.3s;
+        }
+        .ukuran-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.06); }
+        .ukuran-card .bottle-size {
+            width: 40px; height: 60px; margin: 0 auto 12px; border-radius: 20px 20px 10px 10px;
+            background: linear-gradient(180deg, #c9a96e, #b8965e);
+        }
+        .ukuran-card .bottle-size.sm { width: 30px; height: 40px; }
+        .ukuran-card .bottle-size.md { width: 35px; height: 50px; }
+        .ukuran-card .bottle-size.lg { width: 45px; height: 65px; }
+        .ukuran-card .bottle-size.xl { width: 55px; height: 75px; }
+        .ukuran-card h4 { font-size: 1.1rem; font-weight: 700; color: #1a1a2e; }
+        .ukuran-card p { font-size: 0.8rem; color: #6b7280; margin: 4px 0 8px; }
+        .ukuran-card .harga { font-weight: 700; color: #c9a96e; font-size: 1rem; }
+
+        #cara-order { padding: 80px 0; background: #1a1a2e; color: #fff; }
+        #cara-order .section-title { color: #fff; }
+        #cara-order .section-title span { color: #c9a96e; }
+        #cara-order .section-sub { color: rgba(255,255,255,0.5); }
+        .step-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+        }
+        .step-card {
+            text-align: center; padding: 28px 16px;
+            background: rgba(255,255,255,0.04); border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.06); transition: all 0.3s;
+        }
+        .step-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
+        .step-card .num {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: linear-gradient(135deg, #c9a96e, #d4b87a);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px; font-size: 1.2rem; font-weight: 800; color: #1a1a2e;
+        }
+        .step-card h4 { font-size: 1rem; margin-bottom: 8px; }
+        .step-card p { color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.6; }
+
+        #tentang { padding: 80px 0; }
+        .tentang-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+        }
+        .tentang-grid .img-wrap {
+            position: relative; border-radius: 24px; overflow: hidden;
+        }
+        .tentang-grid .img-wrap img { width: 100%; display: block; border-radius: 24px; }
+        .tentang-grid .img-wrap .floating-card {
+            position: absolute; bottom: 20px; left: 20px; right: 20px;
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            border-radius: 16px; padding: 16px 20px; display: flex; gap: 16px; justify-content: space-around;
+        }
+        .tentang-grid .img-wrap .floating-card .item { text-align: center; }
+        .tentang-grid .img-wrap .floating-card .item .num { font-weight: 800; font-size: 1.2rem; color: #1a1a2e; }
+        .tentang-grid .img-wrap .floating-card .item .lbl { font-size: 0.65rem; color: #6b7280; }
+        .tentang-grid h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem; margin-bottom: 16px; color: #1a1a2e;
+        }
+        .tentang-grid p { color: #6b7280; margin-bottom: 16px; font-size: 0.95rem; line-height: 1.8; }
+        .tentang-grid .keunggulan { list-style: none; margin-top: 10px; }
+        .tentang-grid .keunggulan li {
+            padding: 7px 0; display: flex; align-items: center; gap: 10px;
+            color: #4b5563; font-size: 0.9rem;
+        }
+
+        #testimoni { padding: 80px 0; background: #f0e9df; }
+        .testi-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+        }
+        .testi-card {
+            background: #fff; border-radius: 20px; padding: 24px;
+            border: 1px solid #eee8e0; transition: all 0.3s;
+        }
+        .testi-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.06); }
+        .testi-card .stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 10px; }
+        .testi-card blockquote { color: #4b5563; font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+        .testi-card .nama { font-weight: 700; font-size: 0.85rem; }
+        .testi-card .asal { font-size: 0.75rem; color: #9ca3af; }
+
+        #kontak { padding: 60px 0; background: #1a1a2e; color: #fff; }
+        #kontak .container { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+        #kontak h4 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 16px; }
+        #kontak p, #kontak a { color: rgba(255,255,255,0.5); font-size: 0.88rem; text-decoration: none; line-height: 2; }
+        #kontak a:hover { color: #c9a96e; }
+        #kontak .brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800; font-size: 1.5rem; margin-bottom: 8px;
+        }
+        #kontak .brand span { color: #c9a96e; }
+        #kontak .sosmed { display: flex; gap: 12px; margin-top: 16px; }
+        #kontak .sosmed a {
+            width: 40px; height: 40px; border-radius: 12px;
+            background: rgba(255,255,255,0.06); display: flex;
+            align-items: center; justify-content: center; transition: all 0.3s;
+        }
+        #kontak .sosmed a:hover { background: rgba(201,169,110,0.2); }
+        .footer-bottom {
+            grid-column: 1 / -1; padding-top: 24px; margin-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06); text-align: center;
+        }
+        .footer-bottom p { font-size: 0.8rem; }
+
+        .wa-float {
+            position: fixed; bottom: 20px; right: 20px; width: 56px; height: 56px;
+            background: #25D366; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+            transition: all 0.3s; z-index: 999; text-decoration: none;
+        }
+        .wa-float:hover { transform: scale(1.1); }
+        .wa-float svg { width: 26px; height: 26px; fill: #fff; }
+
+        @media (max-width: 968px) {
+            .hero .container { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 2.4rem; }
+            .hero p { margin: 0 auto 28px; }
+            .hero .cta-group { justify-content: center; }
+            .hero-visual { display: none; }
+            .ukuran-grid { grid-template-columns: repeat(2, 1fr); }
+            .step-grid { grid-template-columns: repeat(2, 1fr); }
+            .tentang-grid { grid-template-columns: 1fr; }
+            .testi-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+            #kontak .container { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: block; }
+            .hero h1 { font-size: 1.8rem; }
+            .section-title { font-size: 1.6rem; }
+            .produk-grid { grid-template-columns: 1fr 1fr; }
+            .ukuran-grid { grid-template-columns: 1fr 1fr; }
+            .step-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="container">
+        <a href="#" class="logo">
+            Asmora Parfume
+            <small>✦ PARFUM ISI ULANG ✦</small>
+        </a>
+        <button class="nav-toggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#produk">Katalog</a></li>
+            <li><a href="#ukuran">Ukuran & Harga</a></li>
+            <li><a href="#cara-order">Cara Order</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#testimoni">Testimoni</a></li>
+            <li><a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20tertarik%20dengan%20parfum%20isi%20ulang!" target="_blank" class="nav-wa">&#128242; WA Order</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="anim-up">
+            <div class="badge">🌸 Asmora Parfume</div>
+            <h1>Wangi <span>Mewah</span><br>Harga <span>Terjangkau</span></h1>
+            <p>Parfum isi ulang kualitas premium di Tangerang Selatan. Wangi tahan lama — cocok untuk kegiatan sehari-hari.</p>
+            <div class="cta-group anim-up d3">
+                <a href="#produk" class="cta-primary">&#128071; Lihat Katalog</a>
+                <a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20mau%20tanya%20tentang%20parfum%20isi%20ulang!" target="_blank" class="cta-secondary">&#128242; Tanya-tanya Dulu</a>
+            </div>
+        </div>
+        <div class="hero-visual anim-up d4">
+            <div class="bottle">
+                <div class="label">
+                    <div class="brand">ASMORA</div>
+                    <div class="name">Parfume</div>
+                    <div class="desc">EAU DE PARFUM</div>
+                </div>
+            </div>
+            <div class="float-tag t1">
+                <div class="emoji">✨</div>
+                <div class="text">100% Original</div>
+                <div class="sub">Premium quality</div>
+            </div>
+            <div class="float-tag t2">
+                <div class="emoji">🔥</div>
+                <div class="text">Mulai Rp 15K</div>
+                <div class="sub">Bisa refill</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUK -->
+<section id="produk">
+    <div class="container center">
+        <div class="section-tag">Katalog</div>
+        <h2 class="section-title">Pilihan <span>Varian</span></h2>
+        <p class="section-sub">Pilih wangi favorit kamu. Semua varian ready stock — bisa isi ulang kapan saja.</p>
+    </div>
+    <div class="container">
+        <div class="kategori-tabs">
+            <button class="active" data-kat="all">Semua</button>
+            <button data-kat="wanita">🌸 Wanita</button>
+            <button data-kat="pria">🌊 Pria</button>
+            <button data-kat="unisex">🍃 Unisex</button>
+            <button data-kat="best">⭐ Best Seller</button>
+        </div>
+        <div class="produk-grid" id="produk-grid">
+
+            <div class="produk-card" data-kat="wanita best">
+                <div class="best-badge">⭐ BEST SELLER</div>
+                <div class="bottle-icon w1"></div>
+                <h4>[Varian 1]</h4>
+                <div class="varian">wanita · [kategori wangi]</div>
+                <div class="harga-row">
+                    <span class="harga-utama">Rp [harga]/[ukuran]</span>
+                    <span class="harga-refill">Refill: [harga]</span>
+                </div>
+                <a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20mau%20order%20[Varian%201]" target="_blank" class="btn-order">&#128722; Order via WA</a>
+            </div>
+
+            <div class="produk-card" data-kat="pria best">
+                <div class="best-badge">⭐ BEST SELLER</div>
+                <div class="bottle-icon w2"></div>
+                <h4>[Varian 2]</h4>
+                <div class="varian">pria · [kategori wangi]</div>
+                <div class="harga-row">
+                    <span class="harga-utama">Rp [harga]/[ukuran]</span>
+                    <span class="harga-refill">Refill: [harga]</span>
+                </div>
+                <a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20mau%20order%20[Varian%202]" target="_blank" class="btn-order">&#128722; Order via WA</a>
+            </div>
+
+            <div class="produk-card" data-kat="wanita">
+                <div class="bottle-icon w3"></div>
+                <h4>[Varian 3]</h4>
+                <div class="varian">wanita · [kategori wangi]</div>
+                <div class="harga-row">
+                    <span class="harga-utama">Rp [harga]/[ukuran]</span>
+                    <span class="harga-refill">Refill: [harga]</span>
+                </div>
+                <a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20mau%20order%20[Varian%203]" target="_blank" class="btn-order">&#128722; Order via WA</a>
+            </div>
+
+            <div class="produk-card" data-kat="pria">
+                <div class="bottle-icon w4"></div>
+                <h4>[Varian 4]</h4>
+                <div class="varian">pria · [kategori wangi]</div>
+                <div class="harga-row">
+                    <span class="harga-utama">Rp [harga]/[ukuran]</span>
+                    <span class="harga-refill">Refill: [harga]</span>
+                </div>
+                <a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20mau%20order%20[Varian%204]" target="_blank" class="btn-order">&#128722; Order via WA</a>
+            </div>
+
+            <div class="produk-card" data-kat="unisex">
+                <div class="bottle-icon w5"></div>
+                <h4>[Varian 5]</h4>
+                <div class="varian">unisex · [kategori wangi]</div>
+                <div class="harga-row">
+                    <span class="harga-utama">Rp [harga]/[ukuran]</span>
+                    <span class="harga-refill">Refill: [harga]</span>
+                </div>
+                <a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20mau%20order%20[Varian%205]" target="_blank" class="btn-order">&#128722; Order via WA</a>
+            </div>
+
+            <div class="produk-card" data-kat="wanita best">
+                <div class="best-badge">⭐ BEST SELLER</div>
+                <div class="bottle-icon w6"></div>
+                <h4>[Varian 6]</h4>
+                <div class="varian">wanita · [kategori wangi]</div>
+                <div class="harga-row">
+                    <span class="harga-utama">Rp [harga]/[ukuran]</span>
+                    <span class="harga-refill">Refill: [harga]</span>
+                </div>
+                <a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20mau%20order%20[Varian%206]" target="_blank" class="btn-order">&#128722; Order via WA</a>
+            </div>
+
+            <div class="produk-card" data-kat="unisex">
+                <div class="baru-badge">🆕 BARU</div>
+                <div class="bottle-icon w7"></div>
+                <h4>[Varian 7]</h4>
+                <div class="varian">unisex · [kategori wangi]</div>
+                <div class="harga-row">
+                    <span class="harga-utama">Rp [harga]/[ukuran]</span>
+                    <span class="harga-refill">Refill: [harga]</span>
+                </div>
+                <a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20mau%20order%20[Varian%207]" target="_blank" class="btn-order">&#128722; Order via WA</a>
+            </div>
+
+            <div class="produk-card" data-kat="pria">
+                <div class="bottle-icon w8"></div>
+                <h4>[Varian 8]</h4>
+                <div class="varian">pria · [kategori wangi]</div>
+                <div class="harga-row">
+                    <span class="harga-utama">Rp [harga]/[ukuran]</span>
+                    <span class="harga-refill">Refill: [harga]</span>
+                </div>
+                <a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20mau%20order%20[Varian%208]" target="_blank" class="btn-order">&#128722; Order via WA</a>
+            </div>
+
+            <div class="produk-card" data-kat="wanita unisex">
+                <div class="bottle-icon w9"></div>
+                <h4>[Varian 9]</h4>
+                <div class="varian">wanita · [kategori wangi]</div>
+                <div class="harga-row">
+                    <span class="harga-utama">Rp [harga]/[ukuran]</span>
+                    <span class="harga-refill">Refill: [harga]</span>
+                </div>
+                <a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20mau%20order%20[Varian%209]" target="_blank" class="btn-order">&#128722; Order via WA</a>
+            </div>
+
+            <div class="produk-card" data-kat="pria unisex">
+                <div class="bottle-icon w10"></div>
+                <h4>[Varian 10]</h4>
+                <div class="varian">pria · [kategori wangi]</div>
+                <div class="harga-row">
+                    <span class="harga-utama">Rp [harga]/[ukuran]</span>
+                    <span class="harga-refill">Refill: [harga]</span>
+                </div>
+                <a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20mau%20order%20[Varian%2010]" target="_blank" class="btn-order">&#128722; Order via WA</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- UKURAN & HARGA -->
+<section id="ukuran">
+    <div class="container center">
+        <div class="section-tag">Ukuran</div>
+        <h2 class="section-title">Pilih Ukuran <span>Botol</span></h2>
+        <p class="section-sub">Bisa beli botol baru atau refill botol lama. Lebih hemat!</p>
+    </div>
+    <div class="container">
+        <div class="ukuran-grid">
+            <div class="ukuran-card anim-up">
+                <div class="bottle-size sm"></div>
+                <h4>15 ml</h4>
+                <p>Coba-coba / travel size</p>
+                <div class="harga">Rp [harga]</div>
+            </div>
+            <div class="ukuran-card anim-up d1">
+                <div class="bottle-size md"></div>
+                <h4>30 ml</h4>
+                <p>Ukuran standar favorit</p>
+                <div class="harga">Rp [harga]</div>
+            </div>
+            <div class="ukuran-card anim-up d2">
+                <div class="bottle-size lg"></div>
+                <h4>60 ml</h4>
+                <p>Ukuran besar, paling hemat</p>
+                <div class="harga">Rp [harga]</div>
+            </div>
+            <div class="ukuran-card anim-up d3">
+                <div class="bottle-size xl"></div>
+                <h4>REFILL</h4>
+                <p>Isi ulang botol sendiri</p>
+                <div class="harga">Diskon sampai 20%</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CARA ORDER -->
+<section id="cara-order">
+    <div class="container center">
+        <div class="section-tag" style="background:rgba(201,169,110,0.15);color:#c9a96e;">Cara Order</div>
+        <h2 class="section-title">Gampang <span>Banget</span></h2>
+        <p class="section-sub">Cukup 4 langkah — parfum sampai di rumah.</p>
+    </div>
+    <div class="container">
+        <div class="step-grid">
+            <div class="step-card">
+                <div class="num">1</div>
+                <h4>Pilih Varian</h4>
+                <p>Lihat katalog di atas. Pilih wangi yang kamu suka.</p>
+            </div>
+            <div class="step-card">
+                <div class="num">2</div>
+                <h4>Klik Order</h4>
+                <p>Tekan tombol "Order via WA" — langsung terhubung ke WhatsApp Asmora Parfume.</p>
+            </div>
+            <div class="step-card">
+                <div class="num">3</div>
+                <h4>Konfirmasi</h4>
+                <p>Kami akan reply dengan total harga + ongkir + nomor rekening.</p>
+            </div>
+            <div class="step-card">
+                <div class="num">4</div>
+                <h4>Terima Parfum</h4>
+                <p>Packing rapi, dikirim hari yang sama. Wangi seharian!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TENTANG -->
+<section id="tentang">
+    <div class="container">
+        <div class="tentang-grid">
+            <div class="img-wrap anim-up">
+                <img src="https://placehold.co/500x400/f0e9df/8b7335?text=Asmora+Parfume" alt="Asmora Parfume">
+                <div class="floating-card">
+                    <div class="item"><div class="num">50+</div><div class="lbl">Varian Wangi</div></div>
+                    <div class="item"><div class="num">500+</div><div class="lbl">Pelanggan</div></div>
+                    <div class="item"><div class="num">4.9</div><div class="lbl">Rating</div></div>
+                </div>
+            </div>
+            <div class="anim-up d2">
+                <div class="section-tag">Tentang Kami</div>
+                <h2 class="section-title">Asmora Parfume — <span>Parfum Isi Ulang</span> Premium</h2>
+                <p>Asmora Parfume menyediakan parfum isi ulang berkualitas tinggi dengan harga jauh lebih terjangkau. Semua varian kami pilih langsung dari supplier terpercaya dengan kualitas setara brand internasional.</p>
+                <p>Berlokasi di <strong>Pamulang Permai, Tangerang Selatan</strong>. Dengan sistem refill, kamu bisa hemat sampai 70% tanpa mengorbankan kualitas wangi.</p>
+                <ul class="keunggulan">
+                    <li>✅ 100% original quality — bukan oplosan</li>
+                    <li>✅ Wangi tahan lama sampai 8 jam</li>
+                    <li>✅ Bisa refill — bawa botol lama, bayar lebih murah</li>
+                    <li>✅ Free packing bubble wrap — anti pecah</li>
+                    <li>✅ Pengiriman ke seluruh Indonesia</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONI -->
+<section id="testimoni">
+    <div class="container center">
+        <div class="section-tag">Testimoni</div>
+        <h2 class="section-title">Apa Kata <span>Pelanggan</span></h2>
+        <p class="section-sub">Sudah 500+ pelanggan setia. Ini kata mereka.</p>
+    </div>
+    <div class="container">
+        <div class="testi-grid">
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"Sumpah wanginya sama persis kayak punya temenku yang original. Tahan lama, 7 jam masih keliatan. Udah 4x refill di sini!"</blockquote>
+                <div class="nama">— Dinda Ayu</div>
+                <div class="asal">Pamulang, Tangerang Selatan</div>
+            </div>
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"Buat kantong anak kos kayak aku, ini penyelamat. Wangi enak, harganya ramah. Packaging juga super rapi."</blockquote>
+                <div class="nama">— Rizky Pratama</div>
+                <div class="asal">Serpong, Tangerang Selatan</div>
+            </div>
+            <div class="testi-card">
+                <div class="stars">★★★★☆</div>
+                <blockquote>"Udah 3x order, konsisten banget kualitasnya. Wanginya enak dan pengirimannya cepet. Thanks Asmora Parfume!"</blockquote>
+                <div class="nama">— Sarah Nabila</div>
+                <div class="asal">Ciputat, Tangerang Selatan</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak">
+    <div class="container">
+        <div>
+            <div class="brand">Asmora Parfume <span>✦</span></div>
+            <p style="margin-bottom:12px;">Parfum isi ulang premium di Pamulang Permai, Tangerang Selatan. Wangi mewah, harga merakyat. Bisa refill!</p>
+            <p>&#128205; Pamulang Permai, Tangerang Selatan</p>
+            <p>&#128338; Buka Setiap Hari 09:00-21:00</p>
+            <p>&#128242; WA: 0851-7225-6047</p>
+            <div class="sosmed">
+                <a href="#" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+                </a>
+                <a href="#" aria-label="TikTok">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                </a>
+                <a href="https://wa.me/6285172256047" aria-label="WhatsApp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M19.077 4.928C17.191 3.041 14.683 2 11.987 2 6.819 2 2.56 6.209 2.56 11.313c0 1.984.595 3.915 1.717 5.597L2 22l5.29-1.701c1.614.88 3.461 1.346 5.369 1.346h.005c5.168 0 9.425-4.21 9.425-9.313 0-2.488-.972-4.831-2.857-6.717z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div>
+            <h4>Menu</h4>
+            <a href="#produk">Katalog</a><br>
+            <a href="#ukuran">Ukuran & Harga</a><br>
+            <a href="#cara-order">Cara Order</a><br>
+            <a href="#tentang">Tentang</a><br>
+            <a href="#testimoni">Testimoni</a>
+        </div>
+        <div>
+            <h4>Layanan</h4>
+            <a href="https://wa.me/6285172256047">Order WA</a><br>
+            <a href="https://wa.me/6285172256047">Konsultasi</a><br>
+            <a href="#">Pengiriman</a><br>
+            <a href="#">Cara Refill</a>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Asmora Parfume. All rights reserved.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WA FLOATING -->
+<a href="https://wa.me/6285172256047?text=Halo%20Asmora%20Parfume%2C%20saya%20tertarik%20dengan%20parfum%20isi%20ulang!" target="_blank" class="wa-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M19.077 4.928C17.191 3.041 14.683 2 11.987 2 6.819 2 2.56 6.209 2.56 11.313c0 1.984.595 3.915 1.717 5.597L2 22l5.29-1.701c1.614.88 3.461 1.346 5.369 1.346h.005c5.168 0 9.425-4.21 9.425-9.313 0-2.488-.972-4.831-2.857-6.717z"/></svg>
+</a>
+
+<script>
+    document.querySelectorAll('.kategori-tabs button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelector('.kategori-tabs .active').classList.remove('active');
+            btn.classList.add('active');
+            const kat = btn.dataset.kat;
+            document.querySelectorAll('.produk-card').forEach(card => {
+                if (kat === 'all') { card.style.display = ''; return; }
+                card.style.display = card.dataset.kat.includes(kat) ? '' : 'none';
+            });
+        });
+    });
+
+    document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+        const links = document.querySelector('.nav-links');
+        links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.anim-up, .produk-card, .ukuran-card, .step-card, .testi-card').forEach(el => {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+    });
+
+    document.querySelectorAll('.btn-order').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (typeof fbq === 'function') {
+                fbq('track', 'AddToCart', {
+                    content_name: btn.closest('.produk-card').querySelector('h4')?.textContent || 'Unknown',
+                    content_type: 'product'
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
