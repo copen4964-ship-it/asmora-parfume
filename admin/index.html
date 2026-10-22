@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel — Asmora Parfume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #1a1a2e; color: #fff; min-height: 100vh; }
+        .wrap { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
+        header { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .brand { font-weight: 800; font-size: 1.2rem; }
+        .brand span { color: #c9a96e; }
+        .btn { background: #c9a96e; color: #1a1a2e; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 0.9rem; }
+        .btn:hover { background: #d4b878; }
+        .btn.secondary { background: rgba(255,255,255,0.1); color: #fff; }
+        .btn.danger { background: #e5484d; color: #fff; }
+        .btn.small { padding: 6px 12px; font-size: 0.8rem; border-radius: 8px; }
+        .card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; margin-top: 16px; }
+        .card h3 { font-size: 1rem; margin-bottom: 12px; color: #c9a96e; }
+        label { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.7); margin: 10px 0 4px; }
+        input, textarea, select { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: #fff; font-size: 0.9rem; font-family: inherit; }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: #c9a96e; }
+        textarea { min-height: 60px; resize: vertical; }
+        .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+        .produk-item { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; margin-top: 10px; background: rgba(255,255,255,0.04); }
+        .produk-item img { width: 44px; height: 44px; object-fit: cover; border-radius: 8px; }
+        .produk-item .info { flex: 1; }
+        .produk-item .nama { font-weight: 700; font-size: 0.9rem; }
+        .produk-item .harga { font-size: 0.8rem; color: #c9a96e; }
+        .produk-item .aksi { display: flex; gap: 6px; }
+        .status { font-size: 0.8rem; padding: 4px 10px; border-radius: 20px; display: inline-block; }
+        .status.ok { background: rgba(52,211,153,0.2); color: #34d399; }
+        .status.err { background: rgba(229,72,77,0.2); color: #ff6b70; }
+        .hidden { display: none !important; }
+        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #34d399; color: #1a1a2e; padding: 12px 22px; border-radius: 12px; font-weight: 700; z-index: 99; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .toast.err { background: #ff6b70; color: #fff; }
+        .hint { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 8px; line-height: 1.5; }
+        .tombol-bawah { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+        @media (max-width: 600px) { .grid2 { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <div class="brand">Asmora Parfume <span>✦ Admin</span></div>
+        <div>
+            <button class="btn secondary small" id="btnSimpan" style="display:none">💾 Simpan Perubahan</button>
+            <button class="btn small" id="btnLogout" style="display:none">Keluar</button>
+        </div>
+    </header>
+
+    <!-- Login -->
+    <div class="card" id="loginBox">
+        <h3>🔐 Masuk ke Panel Admin</h3>
+        <p class="hint">Masukkan GitHub Personal Access Token (PAT) yang memiliki akses ke repo <b>copen4964-ship-it/asmora-parfume</b>. Token hanya disimpan di browser Anda (localStorage) — tidak pernah dikirim ke server lain.</p>
+        <label>GitHub Token</label>
+        <input type="password" id="tokenInput" placeholder="ghp_... atau github_pat_...">
+        <div class="tombol-bawah">
+            <button class="btn" id="btnLogin">Masuk</button>
+            <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" class="btn secondary" style="text-decoration:none;display:inline-block;">Cara buat token</a>
+        </div>
+        <div class="status hidden" id="loginStatus"></div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="hidden">
+        <div class="card">
+            <h3>📦 Daftar Produk</h3>
+            <div id="produkList"></div>
+            <div class="tombol-bawah">
+                <button class="btn" id="btnTambah">+ Tambah Produk</button>
+            </div>
+        </div>
+
+        <!-- Form edit/tambah produk -->
+        <div class="card hidden" id="formBox">
+            <h3 id="formTitle">✏️ Edit Produk</h3>
+            <div class="grid2">
+                <div>
+                    <label>Nama Produk *</label>
+                    <input id="fNama" placeholder="cth: Bright Blues">
+                </div>
+                <div>
+                    <label>Kategori</label>
+                    <select id="fKategori">
+                        <option value="wanita">🌸 Wanita</option>
+                        <option value="pria">🌊 Pria</option>
+                        <option value="unisex">🍃 Unisex</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid2">
+                <div>
+                    <label>Deskripsi Singkat</label>
+                    <input id="fDeskripsi" placeholder="cth: citrus segar">
+                </div>
+                <div>
+                    <label>Inspirasi Brand</label>
+                    <input id="fInspirasi" placeholder="cth: D&G Light Blue">
+                </div>
+            </div>
+            <div class="grid2">
+                <div>
+                    <label>Harga *</label>
+                    <input id="fHarga" placeholder="cth: Rp 40.000/30ml">
+                </div>
+                <div>
+                    <label>Keterangan Harga</label>
+                    <input id="fKeterangan" placeholder="cth: Botol baru · wangi premium">
+                </div>
+            </div>
+            <label>Badge (opsional)</label>
+            <input id="fBadge" placeholder="cth: ⭐ BEST SELLER / 🆕 NEW">
+            <label>Foto Produk — URL (opsional, kosongkan utk ikon)</label>
+            <input id="fGambar" placeholder="cth: img/produk-moro.jpg">
+            <p class="hint">Untuk upload foto baru dari HP: upload dulu di tab GitHub repo → folder <b>img</b> → lalu isi path-nya di sini (cth: <b>img/foto-saya.jpg</b>).</p>
+            <div class="tombol-bawah">
+                <button class="btn" id="btnSimpanProduk">💾 Simpan Produk</button>
+                <button class="btn secondary" id="btnBatal">Batal</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>⚙️ Info</h3>
+            <p class="hint">Setiap "Simpan Perubahan" akan langsung meng-commit ke GitHub dan website otomatis ter-update (±1 menit).</p>
+            <p class="hint">Website publik: <a href="https://parfum.asmora.id" target="_blank" style="color:#c9a96e;">parfum.asmora.id</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+const REPO = "copen4964-ship-it/asmora-parfume";
+const BRANCH = "main";
+const FILE = "content/products.json";
+const API = "https://api.github.com";
+
+let token = localStorage.getItem("asmora_token") || "";
+let produkData = null;
+let editingIndex = -1;
+
+// ===== UTIL =====
+function toast(msg, err) {
+    const t = document.createElement("div");
+    t.className = "toast" + (err ? " err" : "");
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 3000);
+}
+
+async function gh(path, opts = {}) {
+    const headers = { "Authorization": `Bearer ${token}`, "Accept": "application/vnd.github+json", "User-Agent": "hermes-admin" };
+    if (opts.body) headers["Content-Type"] = "application/json";
+    const res = await fetch(API + path, { ...opts, headers });
+    if (!res.ok) {
+        let msg = `HTTP ${res.status}`;
+        try { const j = await res.json(); msg = j.message || msg; } catch (e) {}
+        throw new Error(msg);
+    }
+    return res.json();
+}
+
+// ===== LOGIN =====
+async function login() {
+    token = document.getElementById("tokenInput").value.trim();
+    if (!token) { toast("Token kosong", true); return; }
+    const st = document.getElementById("loginStatus");
+    st.className = "status"; st.textContent = "Memeriksa token...";
+    try {
+        const user = await gh("/user");
+        localStorage.setItem("asmora_token", token);
+        st.className = "status ok"; st.textContent = `✅ Masuk sebagai ${user.login}`;
+        setTimeout(loadDashboard, 600);
+    } catch (e) {
+        st.className = "status err"; st.textContent = "❌ Token tidak valid: " + e.message;
+    }
+}
+
+// ===== DASHBOARD =====
+async function loadDashboard() {
+    document.getElementById("loginBox").classList.add("hidden");
+    document.getElementById("dashboard").classList.remove("hidden");
+    document.getElementById("btnLogout").style.display = "";
+    document.getElementById("btnSimpan").style.display = "";
+    await muatProduk();
+    renderList();
+}
+
+async function ambilSha() {
+    try {
+        const data = await gh(`/repos/${REPO}/contents/${FILE}?ref=${BRANCH}`);
+        return data.sha;
+    } catch (e) {
+        return null;
+    }
+}
+
+async function muatProduk() {
+    try {
+        const data = await gh(`/repos/${REPO}/contents/${FILE}?ref=${BRANCH}`);
+        const content = atob(data.content.replace(/\s/g, ""));
+        produkData = JSON.parse(content);
+        return data.sha;
+    } catch (e) {
+        toast("Gagal baca produk: " + e.message, true);
+        produkData = { produk: [] };
+        return null;
+    }
+}
+
+function renderList() {
+    const el = document.getElementById("produkList");
+    if (!produkData || !produkData.produk) { el.innerHTML = "<p class='hint'>Belum ada produk.</p>"; return; }
+    el.innerHTML = produkData.produk.map((p, i) => `
+        <div class="produk-item">
+            ${p.gambar && !p.gambar.startsWith("w") ? `<img src="${p.gambar}" alt="">` : `<div style="width:44px;height:44px;border-radius:8px;background:rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;">🧴</div>`}
+            <div class="info">
+                <div class="nama">${p.nama || "(tanpa nama)"}</div>
+                <div class="harga">${p.harga || ""} ${p.kategori ? "· " + p.kategori : ""}</div>
+            </div>
+            <div class="aksi">
+                <button class="btn small secondary" onclick="editProduk(${i})">✏️</button>
+                <button class="btn small danger" onclick="hapusProduk(${i})">🗑</button>
+            </div>
+        </div>`).join("");
+}
+
+function editProduk(i) {
+    const p = produkData.produk[i];
+    editingIndex = i;
+    document.getElementById("formTitle").textContent = "✏️ Edit Produk";
+    document.getElementById("fNama").value = p.nama || "";
+    document.getElementById("fKategori").value = (p.kategori || "pria").split(" ")[0];
+    document.getElementById("fDeskripsi").value = p.deskripsi || "";
+    document.getElementById("fInspirasi").value = p.inspirasi || "";
+    document.getElementById("fHarga").value = p.harga || "";
+    document.getElementById("fKeterangan").value = p.keterangan || "";
+    document.getElementById("fBadge").value = p.badge || "";
+    document.getElementById("fGambar").value = p.gambar && !p.gambar.startsWith("w") ? p.gambar : "";
+    document.getElementById("formBox").classList.remove("hidden");
+    document.getElementById("formBox").scrollIntoView({ behavior: "smooth" });
+}
+
+function tambahProduk() {
+    editingIndex = -1;
+    document.getElementById("formTitle").textContent = "➕ Tambah Produk";
+    ["fNama","fKategori","fDeskripsi","fInspirasi","fHarga","fKeterangan","fBadge","fGambar"].forEach(id => {
+        const el = document.getElementById(id);
+        if (id === "fKategori") el.value = "pria"; else el.value = "";
+    });
+    document.getElementById("formBox").classList.remove("hidden");
+    document.getElementById("formBox").scrollIntoView({ behavior: "smooth" });
+}
+
+function batalForm() {
+    document.getElementById("formBox").classList.add("hidden");
+}
+
+function hapusProduk(i) {
+    if (!confirm(`Hapus produk "${produkData.produk[i].nama}"?`)) return;
+    produkData.produk.splice(i, 1);
+    renderList();
+    toast("Produk dihapus. Klik 💾 Simpan Perubahan.");
+}
+
+function simpanProduk() {
+    const nama = document.getElementById("fNama").value.trim();
+    const harga = document.getElementById("fHarga").value.trim();
+    if (!nama || !harga) { toast("Nama & harga wajib diisi", true); return; }
+    const produk = {
+        nama,
+        kategori: document.getElementById("fKategori").value,
+        deskripsi: document.getElementById("fDeskripsi").value.trim(),
+        inspirasi: document.getElementById("fInspirasi").value.trim(),
+        harga,
+        keterangan: document.getElementById("fKeterangan").value.trim(),
+        badge: document.getElementById("fBadge").value.trim(),
+        gambar: document.getElementById("fGambar").value.trim() || "w5"
+    };
+    if (editingIndex >= 0) {
+        produkData.produk[editingIndex] = produk;
+    } else {
+        produkData.produk.push(produk);
+    }
+    batalForm();
+    renderList();
+    toast("Produk tersimpan. Klik 💾 Simpan Perubahan untuk publish.");
+}
+
+// ===== SIMPAN KE GITHUB =====
+async function simpanKeGithub() {
+    const btn = document.getElementById("btnSimpan");
+    btn.textContent = "⏳ Menyimpan...";
+    btn.disabled = true;
+    try {
+        const sha = await ambilSha(); // ambil SHA terbaru tanpa menimpa data lokal
+        const localData = produkData;
+        const filePath = `/repos/${REPO}/contents/${FILE}`;
+        const body = {
+            message: "Update katalog dari Admin Panel",
+            content: btoa(unescape(encodeURIComponent(JSON.stringify(localData, null, 2)))),
+            branch: BRANCH,
+            sha: sha
+        };
+        const res = await fetch(API + filePath, { method: "PUT", headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json", "Accept": "application/vnd.github+json", "User-Agent": "hermes-admin" }, body: JSON.stringify(body) });
+        if (!res.ok) {
+            const j = await res.json().catch(() => ({}));
+            throw new Error(j.message || `HTTP ${res.status}`);
+        }
+        toast("✅ Perubahan dipublish! Website update ±1 menit.");
+    } catch (e) {
+        toast("❌ Gagal simpan: " + e.message, true);
+    }
+    btn.textContent = "💾 Simpan Perubahan";
+    btn.disabled = false;
+}
+
+function logout() {
+    localStorage.removeItem("asmora_token");
+    token = "";
+    location.reload();
+}
+
+// ===== INIT =====
+document.getElementById("btnLogin").onclick = login;
+document.getElementById("tokenInput").addEventListener("keydown", e => { if (e.key === "Enter") login(); });
+document.getElementById("btnLogout").onclick = logout;
+document.getElementById("btnSimpan").onclick = simpanKeGithub;
+document.getElementById("btnTambah").onclick = tambahProduk;
+document.getElementById("btnSimpanProduk").onclick = simpanProduk;
+document.getElementById("btnBatal").onclick = batalForm;
+
+if (token) {
+    document.getElementById("tokenInput").value = token;
+    // coba auto-login
+    (async () => {
+        try { await gh("/user"); await loadDashboard(); } catch (e) { /* tetap di login */ }
+    })();
+}
+</script>
+</body>
+</html>
