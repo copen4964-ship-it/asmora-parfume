@@ -1,0 +1,108 @@
+{
+  "produk": [
+    {
+      "kategori": "wanita best",
+      "badge": "⭐ BEST SELLER",
+      "gambar": "img/produk-moro.jpg",
+      "nama": "Bright Blues",
+      "deskripsi": "wanita · citrus segar |",
+      "inspirasi": "D&G Light Blue",
+      "harga": "Rp 40.000/30ml",
+      "keterangan": "Botol baru · wangi premium",
+      "wa_message": "Halo Asmora Parfume, saya mau order Bright Blues!"
+    },
+    {
+      "kategori": "pria best",
+      "badge": "⭐ BEST SELLER",
+      "gambar": "img/produk-moro.jpg",
+      "nama": "Sea D Chanel",
+      "deskripsi": "pria · maskulin segar  |",
+      "inspirasi": "Inspirasi: Bleu de Chanel",
+      "harga": "Rp 40.000/30ml",
+      "keterangan": "Botol baru · wangi premium",
+      "wa_message": "Halo Asmora Parfume, saya mau order Sea D Chanel!"
+    },
+    {
+      "kategori": "pria",
+      "badge": "🆕 NEW",
+      "gambar": "img/produk-moro.jpg",
+      "nama": "212 VIP Man",
+      "deskripsi": "pria · maskulin elegan |",
+      "inspirasi": "Inspirasi: Carolina Herrera 212 VIP",
+      "harga": "Rp 40.000/30ml",
+      "keterangan": "Botol baru · wangi premium",
+      "wa_message": "Halo Asmora Parfume, saya mau order 212 VIP Man!"
+    },
+    {
+      "kategori": "pria",
+      "gambar": "img/produk-moro.jpg",
+      "nama": "H-Bose Power",
+      "deskripsi": "pria · aromatik maskulin  |",
+      "inspirasi": "Inspirasi: Hugo Boss",
+      "harga": "Rp 40.000/30ml",
+      "keterangan": "Botol baru · wangi premium",
+      "wa_message": "Halo Asmora Parfume, saya mau order H-Bose Power!"
+    },
+    {
+      "kategori": "pria",
+      "gambar": "img/produk-moro.jpg",
+      "nama": "La Bae",
+      "deskripsi": "pria · manis tropis  |",
+      "inspirasi": "Inspirasi: JPG Le Beau",
+      "harga": "Rp 40.000/30ml",
+      "keterangan": "Botol baru · wangi premium",
+      "wa_message": "Halo Asmora Parfume, saya mau order La Bae!"
+    },
+    {
+      "kategori": "pria",
+      "gambar": "img/produk-moro.jpg",
+      "nama": "Blu De Hill",
+      "deskripsi": "pria · segar akuatik  |",
+      "inspirasi": "Inspirasi: Dunhill Desire Blue",
+      "harga": "Rp 40.000/30ml",
+      "keterangan": "Botol baru · wangi premium",
+      "wa_message": "Halo Asmora Parfume, saya mau order Blu De Hill!"
+    },
+    {
+      "kategori": "wanita",
+      "gambar": "img/produk-moro.jpg",
+      "nama": "Libra",
+      "deskripsi": "wanita · mewah elegan  |",
+      "inspirasi": "Inspirasi: YSL Libre",
+      "harga": "Rp 40.000/30ml",
+      "keterangan": "Botol baru · wangi premium",
+      "wa_message": "Halo Asmora Parfume, saya mau order Libra!"
+    },
+    {
+      "kategori": "pria",
+      "gambar": "img/produk-moro.jpg",
+      "nama": "Reed Loop",
+      "deskripsi": "pria · energik hangat  |",
+      "inspirasi": "Inspirasi: Ralph Lauren Polo Red",
+      "harga": "Rp 40.000/30ml",
+      "keterangan": "Botol baru · wangi premium",
+      "wa_message": "Halo Asmora Parfume, saya mau order Reed Loop!"
+    },
+    {
+      "kategori": "pria",
+      "gambar": "img/produk-moro.jpg",
+      "nama": "De Fahrenheit",
+      "deskripsi": "pria · unik berkarakter  |",
+      "inspirasi": "Inspirasi: Dior Fahrenheit",
+      "harga": "Rp 40.000/30ml",
+      "keterangan": "Botol baru · wangi premium",
+      "wa_message": "Halo Asmora Parfume, saya mau order De Fahrenheit!"
+    },
+    {
+      "kategori": "unisex",
+      "badge": "🆕 PELARUT",
+      "gambar": "w5",
+      "nama": "Pelarut Parfume Grade Super",
+      "deskripsi": "mixing base 250ml  |",
+      "inspirasi": "Untuk campuran bibit parfum murni",
+      "harga": "Rp 35.000/250ml",
+      "keterangan": "Siap pakai, kualitas premium",
+      "wa_message": "Halo Asmora Parfume, saya mau order Pelarut Parfum!"
+    }
+  ]
+}
