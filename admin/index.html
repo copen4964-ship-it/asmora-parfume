@@ -55,12 +55,18 @@
     <!-- Login -->
     <div class="card" id="loginBox">
         <h3>🔐 Masuk ke Panel Admin</h3>
-        <p class="hint">Masukkan GitHub Personal Access Token (PAT) yang memiliki akses ke repo <b>copen4964-ship-it/asmora-parfume</b>. Token hanya disimpan di browser Anda (localStorage) — tidak pernah dikirim ke server lain.</p>
-        <label>GitHub Token</label>
-        <input type="password" id="tokenInput" placeholder="ghp_... atau github_pat_...">
+        <p class="hint" id="loginHint">Masukkan <b>password admin</b> Anda. Token GitHub tersimpan <b>terenkripsi</b> di browser — tidak pernah dikirim ke server lain.</p>
+        <div id="tokenRow" class="hidden">
+            <label>GitHub Token (hanya saat setup pertama)</label>
+            <input type="password" id="tokenInput" placeholder="github_pat_... atau ghp_...">
+            <p class="hint" style="margin-top:6px">Token perlu akses repo <b>asmora-parfume</b> (Contents: Read & Write).</p>
+        </div>
+        <label>Password Admin</label>
+        <input type="password" id="pwInput" placeholder="Password admin" autocomplete="current-password">
         <div class="tombol-bawah">
             <button class="btn" id="btnLogin">Masuk</button>
-            <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" class="btn secondary" style="text-decoration:none;display:inline-block;">Cara buat token</a>
+            <button class="btn secondary" id="btnReset" style="display:none">Reset Setup</button>
+            <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" class="btn secondary" style="text-decoration:none;display:inline-block;" id="btnBuatToken">Cara buat token</a>
         </div>
         <div class="status hidden" id="loginStatus"></div>
     </div>
@@ -137,9 +143,10 @@ const BRANCH = "main";
 const FILE = "content/products.json";
 const API = "https://api.github.com";
 
-let token = localStorage.getItem("asmora_token") || "";
+let token = "";
 let produkData = null;
 let editingIndex = -1;
+let setupDone = !!localStorage.getItem("asmora_vault");
 
 // ===== UTIL =====
 function toast(msg, err) {
@@ -162,19 +169,93 @@ async function gh(path, opts = {}) {
     return res.json();
 }
 
+// ===== CRYPTO (WebCrypto: PBKDF2 + AES-GCM) =====
+const enc = new TextEncoder();
+const dec = new TextDecoder();
+
+function b64encode(buf) {
+    let s = "";
+    for (let i = 0; i < buf.length; i += 0x8000) {
+        s += String.fromCharCode.apply(null, buf.subarray(i, i + 0x8000));
+    }
+    return btoa(s);
+}
+function b64decode(str) {
+    const bin = atob(str);
+    const u8 = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+    return u8;
+}
+
+async function deriveKey(password, salt) {
+    const km = await crypto.subtle.importKey("raw", enc.encode(password), "PBKDF2", false, ["deriveKey"]);
+    return crypto.subtle.deriveKey(
+        { name: "PBKDF2", salt, iterations: 150000, hash: "SHA-256" },
+        km,
+        { name: "AES-GCM", length: 256 },
+        false,
+        ["encrypt", "decrypt"]
+    );
+}
+
+async function encryptToken(password, rawToken) {
+    const salt = crypto.getRandomValues(new Uint8Array(16));
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const key = await deriveKey(password, salt);
+    const ct = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, enc.encode(rawToken));
+    return {
+        v: 1,
+        salt: b64encode(salt),
+        iv: b64encode(iv),
+        ct: b64encode(new Uint8Array(ct))
+    };
+}
+
+async function decryptToken(password, vault) {
+    try {
+        const salt = b64decode(vault.salt);
+        const iv = b64decode(vault.iv);
+        const key = await deriveKey(password, salt);
+        const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, b64decode(vault.ct));
+        return dec.decode(pt);
+    } catch (e) {
+        return null;
+    }
+}
+
 // ===== LOGIN =====
 async function login() {
-    token = document.getElementById("tokenInput").value.trim();
-    if (!token) { toast("Token kosong", true); return; }
+    const pw = document.getElementById("pwInput").value;
     const st = document.getElementById("loginStatus");
-    st.className = "status"; st.textContent = "Memeriksa token...";
+    if (!pw) { toast("Password kosong", true); return; }
+    st.className = "status"; st.textContent = "Memeriksa...";
+
     try {
+        if (setupDone) {
+            // Mode password saja: buka vault
+            const vault = JSON.parse(localStorage.getItem("asmora_vault"));
+            token = await decryptToken(pw, vault);
+            if (!token) throw new Error("Password salah");
+        } else {
+            // Mode setup pertama: password + token baru
+            const rawToken = document.getElementById("tokenInput").value.trim();
+            if (!rawToken) throw new Error("Masukkan GitHub token");
+            token = rawToken;
+        }
+
         const user = await gh("/user");
-        localStorage.setItem("asmora_token", token);
+        if (!setupDone) {
+            // Enkripsi & simpan vault, hapus token plaintext
+            const vault = await encryptToken(pw, token);
+            localStorage.setItem("asmora_vault", JSON.stringify(vault));
+            localStorage.removeItem("asmora_token");
+            setupDone = true;
+        }
         st.className = "status ok"; st.textContent = `✅ Masuk sebagai ${user.login}`;
         setTimeout(loadDashboard, 600);
     } catch (e) {
-        st.className = "status err"; st.textContent = "❌ Token tidak valid: " + e.message;
+        token = "";
+        st.className = "status err"; st.textContent = "❌ Gagal masuk: " + e.message;
     }
 }
 
@@ -323,21 +404,31 @@ function logout() {
     location.reload();
 }
 
+function resetSetup() {
+    if (!confirm("Hapus token tersimpan & mulai setup ulang?")) return;
+    localStorage.removeItem("asmora_vault");
+    localStorage.removeItem("asmora_token");
+    setupDone = false;
+    location.reload();
+}
+
 // ===== INIT =====
 document.getElementById("btnLogin").onclick = login;
+document.getElementById("pwInput").addEventListener("keydown", e => { if (e.key === "Enter") login(); });
 document.getElementById("tokenInput").addEventListener("keydown", e => { if (e.key === "Enter") login(); });
 document.getElementById("btnLogout").onclick = logout;
+document.getElementById("btnReset").onclick = resetSetup;
 document.getElementById("btnSimpan").onclick = simpanKeGithub;
 document.getElementById("btnTambah").onclick = tambahProduk;
 document.getElementById("btnSimpanProduk").onclick = simpanProduk;
 document.getElementById("btnBatal").onclick = batalForm;
 
-if (token) {
-    document.getElementById("tokenInput").value = token;
-    // coba auto-login
-    (async () => {
-        try { await gh("/user"); await loadDashboard(); } catch (e) { /* tetap di login */ }
-    })();
+// Tampilkan field token hanya saat setup pertama
+if (!setupDone) {
+    document.getElementById("tokenRow").classList.remove("hidden");
+} else {
+    document.getElementById("btnReset").style.display = "";
+    document.getElementById("btnBuatToken").style.display = "none";
 }
 </script>
 </body>
